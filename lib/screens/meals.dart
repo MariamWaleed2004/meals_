@@ -8,11 +8,10 @@ class MealsScreen extends StatelessWidget {
     super.key,
     this.title,
     required this.meals,
-    });
+  });
 
   final String? title;
   final List<Meal> meals;
-
 
   void selectMeal(BuildContext context, Meal meal) {
     Navigator.of(context).push(
@@ -26,23 +25,26 @@ class MealsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget content = Center(child: Column(
+    Widget content = Center(
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-           Text('Uh oh ... nothimg here!',
-           style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-            color: Theme.of(context).colorScheme.onBackground,
-              ),
+          Text(
+            'Uh oh ... nothing here!',
+            style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
           ),
           const SizedBox(height: 16),
-          Text('Try selecting a different category!',
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-            color: Theme.of(context).colorScheme.onBackground,
-              ),
-            ),
-          ],
+          Text(
+            'Try selecting a different category!',
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
+          ),
+        ],
       ),
-      );
+    );
 
     if (meals.isNotEmpty) {
       content = ListView.builder(
@@ -53,9 +55,8 @@ class MealsScreen extends StatelessWidget {
             selectMeal(context, meal);
           },
         ),
-      );  
+      );
     }
-
 
     if (title == null) {
       return content;
